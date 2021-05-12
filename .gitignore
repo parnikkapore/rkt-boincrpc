@@ -1,0 +1,18 @@
+# Generic Racket gitignore file
+# Source: https://www.toptal.com/developers/gitignore?templates=racket
+
+# DrRacket autosave files
+*.rkt~
+*.rkt.bak
+\#*.rkt#
+\#*.rkt#*#
+
+# Compiled racket bytecode
+compiled/
+*.zo
+
+# Dependency tracking files
+*.dep
+
+# Files specific to this project
+api-keys.rkt
