@@ -1,1 +1,1 @@
-/home/parnikkapore/Documents/racket/boincrpc/brpc.rkt
+./brpc.rkt
