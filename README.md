@@ -1,8 +1,8 @@
-# boincrpc
+# BoincRPC
 Thin (but maybe soon to be thicker) abstraction layer for using BOINC's RPC on Racket
 
 ### Exported functions
-```racket
+```scheme
 (define brpc-conn? (-> xexpr? xexpr?))
 
 (provide (contract-out

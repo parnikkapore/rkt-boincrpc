@@ -2,7 +2,7 @@
 (require xml)
 (require xml/path)
 (require openssl/md5)
-(require "./libs/xml.rkt")
+(require libquiche/xml)
 
 ;;; boincrpc - Thin abstraction layer for using BOINC's RPC on Racket ==========
 
@@ -58,6 +58,5 @@
          [request-body `(auth2 () (nonce_hash () ,password-hash))]
          [request-resp (request request-body)])
     ; TODO: Handle <error> replies
-    (if (equal? (car request-resp) 'authorized) ; Is the first element in the reply "<authorized />"?
-        #t
-        #f)))
+    ; First element in reply "<authorized />" == success, fail otherwise
+    (equal? (car request-resp) 'authorized)))

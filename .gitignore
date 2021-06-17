@@ -7,12 +7,20 @@
 \#*.rkt#
 \#*.rkt#*#
 
+*.scrbl~
+*.scrbl.bak
+\#*.scrbl#
+\#*.scrbl#*#
+
 # Compiled racket bytecode
 compiled/
 *.zo
+doc/
 
 # Dependency tracking files
 *.dep
 
 # Files specific to this project
 api-keys.rkt
+main_.rkt
+LICENSE-*

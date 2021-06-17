@@ -1,0 +1,22 @@
+#lang scribble/manual
+@require[@for-label[boincrpc
+                    racket/base]]
+
+@title{boincrpc}
+@author{parnikkapore}
+
+@defmodule[boincrpc]
+
+Package Description Here
+ 
+Welcome to my documentation: @racket[(list 'testing 1 2 3)].
+
+@racket[(define brpc-conn? (-> xexpr? xexpr?))]
+
+@defproc[ (brpc-requester [host string?] [port port-number?])
+           brpc-conn?]{
+    Returns a function to send requests
+}
+
+;; Authenticates the session
+[brpc-auth (->* (brpc-conn?) (string?) boolean?)]))
