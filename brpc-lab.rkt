@@ -1,8 +1,8 @@
 #lang racket
-(require "./brpc.rkt")
+(require boincrpc)
 (require xml)
 (require xml/path)
-(require "./libs/xml.rkt")
+(require libquiche/xml)
 
 (require "./api-keys.rkt")
 
