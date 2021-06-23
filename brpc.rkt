@@ -13,8 +13,6 @@
           ;; Connect to a BOINC client
           [brpc-connect (->* () (string? port-number?) brpc-conn?)]
           ;; Aliases
-          ; Backwards compatibility
-          [rename brpc-connect brpc-requester (->* () (string? port-number?) brpc-conn?)]
           ; For the SICP Schemers out there
           [rename brpc-connect make-brpc-conn (->* () (string? port-number?) brpc-conn?)]
           ;; Send a request through a brpc-conn (or call the instance like a function)

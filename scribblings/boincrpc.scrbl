@@ -8,27 +8,46 @@
 
 @defmodule[boincrpc]
 
-Thin @italic{(but maybe soon to be thicker)} abstraction layer for using BOINC’s
-Client RPC on Racket.
+Thin @italic{(but maybe soon to be thicker)} abstraction layer for using
+@hyperlink["https://boinc.berkeley.edu/trac/wiki/GuiRpcProtocol"]{BOINC’s Client
+ RPC} on Racket.
 
-@defproc[ (brpc-requester [host string? "localhost"] [port port-number? "31416"])
-         brpc-conn?]{
- Opens a connection to the specified BOINC client and returns a function
- used to send requests to it.}
+@section{Establishing connections and sending raw requests}
 
-@defproc[ (brpc-conn [request xexpr? '(auth1)])
-         xexpr?]{
- To use the function returned from @racket{brpc-requester}, call it with the
- request you wish to send (as an @racket{xexpr}). The function will then send
- the request to the BOINC client it's connected to, wait for the reply, then
- return the reply as an xexpr.
+@defstruct*[brpc-conn ([iport input-port?] [oport output-port?])]{
+ Represents a ClientRPC connection to a BOINC client.
+
+ The constructor is not available - please use @racket[brpc-connect] to
+ start a new connection.
 }
 
-Several functions also take in this type of function to communicate with the
-BOINC client on your behalf.
+@defproc[ (brpc-connect [host string? "localhost"] [port port-number? "31416"])
+         brpc-conn?]{
+ Opens a connection to the specified BOINC client.
+}
+
+@defproc[ (brpc-go [conn brpc-conn?] [request xexpr? '(auth1)])
+         xexpr?]{
+ Sends a request to the BOINC client through @racket[conn], waits for the reply,
+ then returns the reply.
+
+ You can also call an instance of @racket[brpc-conn?] directly like a function
+ to send a request - pass in @racket[request] as the only argument.
+}
+
+@section{Helpers and wrappers}
 
 @defproc[ (brpc-auth [conn brpc-conn?] [password string? ""])
          boolean?]{
- Authenticates the connection. Returns @racket{#t} on success, @racket{#f} on
+ Authenticates the connection. Returns @racket[#t] on success, @racket[#f] on
  failure.
+}
+
+@section{Aliases}
+
+@subsection{Aliases of @racket[brpc-connect]}
+
+@defproc[ (make-brpc-conn [host string? "localhost"] [port port-number? "31416"])
+         brpc-conn?]{
+ For the SICP Schemers out there
 }
