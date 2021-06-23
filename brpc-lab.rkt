@@ -6,7 +6,7 @@
 
 (require "./api-keys.rkt")
 
-(define my-request (brpc-requester "localhost" %port))
+(define my-request (brpc-connect "localhost" %port))
 (brpc-auth my-request %password)
 
 ; Get latest message sequence number (*STRING*)
