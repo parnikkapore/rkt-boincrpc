@@ -1,5 +1,5 @@
 #lang racket
-(require boincrpc)
+(require "./brpc.rkt")
 (require xml)
 (require xml/path)
 (require libquiche/xml)
